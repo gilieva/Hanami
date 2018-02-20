@@ -2,25 +2,129 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .simple-calendar {
-  .day {}
+    .calendar-heading{
+       color: black;
+       margin-left: 8.7em;
+       // font-size: 2.2em;
+    }
+    table {
+      -webkit-border-horizontal-spacing: 0px;
+      -webkit-border-vertical-spacing: 0px;
+      background-color: rgba(0, 0, 0, 0);
+      // border: 10px solid rgb(255,255,255);
+      border-collapse: collapse;
+      box-sizing: border-box;
+      // max-width: 100%;
+      // width: 100%;
+    }
 
-  .wday-0 {}
-  .wday-1 {}
-  .wday-2 {}
-  .wday-3 {}
-  .wday-4 {}
-  .wday-5 {}
-  .wday-6 {}
+    tr {
+      border-collapse: collapse;
+    }
 
-  .today {}
-  .past {}
-  .future {}
+    th {
 
-  .start-date {}
+      // padding: 10px;
+      // border-bottom: 10px solid rgb(255,255,255);
+      // border-collapse: collapse;
+      // border-left: 10px solid rgb(255,255,255);
+      // border-right: 10px solid rgb(255,255,255);
+      // border-top: 0px none rgb(51, 51, 51);
+      // box-sizing: border-box;
+      // text-align: left;
+    }
 
-  .prev-month {}
-  .next-month { }
-  .current-month {}
+    td {
+      // text-align: center;
+      // font-size: 2em;
+     //  padding: 10px;
+     //  vertical-align: top;
+     //  // width: 14%;
+     //  border: 8px solid #ddd;
+     //  border-top-color: rgb(255,255,255);
+     //  border-top-style: solid;
+     //  border-top-width: 10px;
+     //  border-right-color: rgb(255,255,255);
+     //  border-right-style: solid;
+     //  border-right-width: 10px;
+     //  border-bottom-color: rgb(255,255,255);
+     //  border-bottom-style: solid;
+     //  border-bottom-width: 10px;
+     //  border-left-color: rgb(255,255,255);
+     //  border-left-style: solid;
+     //  border-left-width: 4px;
+    }
 
-  .has-events {}
-}
+    .day {
+      // height: 50px;
+    }
+
+    .wday-0 {}
+    .wday-1 {}
+    .wday-2 {}
+    .wday-3 {}
+    .wday-4 {}
+    .wday-5 {}
+    .wday-6 {}
+
+    .today {
+      background: #e6878c; //#ac7153
+      color: gray;
+    }
+    .today:before {
+      
+       content: "Днес";
+    }
+
+
+    .past {
+      background-color: #ffa073;
+      color: gray;
+
+    }
+    .future {
+      background-color: rgba(230, 135, 140,0.2);
+      // border: 8px solid #ffa073;
+      border-top-color: rgb(255,255,255);
+      border-top-style: solid;
+      // border-top-width: 10px;
+      border-right-color: rgb(255,255,255);
+      border-right-style: solid;
+      // border-right-width: 10px;
+      border-bottom-color: 0px;
+     
+      // border-bottom-width: 1px;
+      border-left-color: rgb(255,255,255);
+      border-left-style: solid;
+      // border-left-width: 4px;
+      color: black;
+   // background-clip: content-box;
+    }
+
+
+    .start-date {
+
+    }
+
+    .prev-month {
+      background: #fff; //#f7f1ee
+      color: #fff;
+    }
+    .next-month {
+      background: #fff;
+      color: #fff;
+    }
+    .current-month {
+    }
+
+    .has-events {
+      background-color: #ffa073;
+      color: #fff;
+    }
+    .table-striped tr th {
+      font-size: 1.25em;
+      color:#ffa073;
+      text-align: center;
+    }
+   
+  }
