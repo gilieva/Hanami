@@ -15,7 +15,8 @@
       <% if(current_product.id ==current_order_item.product_id) %>
       <% current_product_order_items_id_del  = @items_array[@counter_del] %>
           <% @counter_del=@counter_del+1 %>
-		<p class="text-left" > <%= current_product.name%> | Бр. <%= current_order_item.quantity %>&nbsp<%= link_to "+",{:controller => :home,:action =>'update',:order_item_id_update => current_order_item.id,:add => current_order_item.quantity},data: {confirm: 'Сигурни ли сте че искате да увеличите  количеството?'}  %> 
+		<p class="text-left" > <%= current_product.name%> | Бр. <%= current_order_item.quantity %>&nbsp<%= link_to "+",{:controller => :home,:action =>'update',:product_price => current_product.price,
+      :order_item_id_update => current_order_item.id,:add => current_order_item.quantity},data: {confirm: 'Сигурни ли сте че искате да увеличите  количеството?'}  %> 
 
 
 

@@ -35,13 +35,8 @@ class HomeController < ApplicationController
      
         @current_products = Product.where(id: @items_array_product).all
     
-     @order_items.each do |order_items_id|
-      @current_products.each do |current_product_sum|
-        if(order_items_id.product_id == current_product_sum.id)
-      
-                  @sum= @sum.to_f + (current_product_sum.price * order_items_id.quantity)
-                end
-          end
+     @order_items.each do |order_items_total_sum|
+      @sum = @sum +order_items_total_sum.total_price
       end
   end
 
@@ -88,15 +83,15 @@ class HomeController < ApplicationController
      redirect_to '/'
   end
   def update
-
+    current_product_price = params[:product_price].to_f
     order_item_id_update = params[:order_item_id_update]
     get_less = params[:less].to_i
     get_add = params[:add].to_i
     if(get_add >= 1)
         update_order_item_quantity = OrdersItem.find_by(id: order_item_id_update)
         add_to_quantity = get_add + 1
-
-        update_order_item_quantity.update(quantity: add_to_quantity)
+        update_total_price = current_product_price*add_to_quantity
+        update_order_item_quantity.update(quantity: add_to_quantity,total_price: update_total_price)
       else
         if(get_less > 1)
         update_order_item_quantity = OrdersItem.find_by(id: order_item_id_update)
