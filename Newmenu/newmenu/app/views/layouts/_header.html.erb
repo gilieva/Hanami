@@ -1,0 +1,42 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" role="navigation" ">
+     <div class="container" id="navfluid" >
+       <div class="navbar-header">
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+       <span class="sr-only">Toggle navigation</span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+      </button>
+     <%= link_to image_tag("Asset4.png", :border=>0, :class => 'logo'), root_url %>
+    </div>
+<div class="collapse navbar-collapse" id="navigationbar">
+    <ul class="nav navbar-nav" id="menu_navbar">
+      <% if user_signed_in? %>
+      <ul>
+        <li>
+         <%= week_calendar number_of_weeks: 1 do |date| %>
+  <%= date %>
+<% end %>
+
+        </li>
+      </ul>
+             <li> 
+              <div id="menu_date">
+               <a id="href_style_navbar" > &nbsp &nbsp &nbsp &nbsp &nbspМеню 30.02 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp| &nbsp 5</a></div>  
+               <ul>
+                <li class="dropdown" style="list-style-type: none;">
+                  
+                Здравей, <%= current_user.name %>   </li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" > <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li> <%= link_to "Sign out",  destroy_user_session_path, :method => 'delete' , id:'href_style_navbar_name'  %> 
+              </li>
+            </ul>
+            </li>
+          </ul>
+               <% end %>
+            </ul>
+</div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>

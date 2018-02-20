@@ -1,0 +1,105 @@
+#htwo {
+    color:#069;
+}
+#sign_in_background{
+background-image: url(login.jpg);
+
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+     position: fixed;
+ background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+  
+ 
+}
+#login_but{
+	min-width:75%;
+	background-color: #ffa073;
+	color:white;
+
+}
+
+
+#email_sign_in{
+    max-width:80%;
+     font-size: 18px;
+    margin: 0 auto;
+
+	}
+
+#password_sign_in{
+    max-width:80%;
+     font-size: 18px;
+    margin: 0 auto;
+
+}
+
+#div_login{
+	background:white;
+    border-radius: 5px;
+}
+#div_login_1{
+
+
+}
+#div_login_2{
+
+
+}
+#sign_in_logo{
+    background-image: url(sign_in_logo.png);
+    width:11em;
+    height:7em;
+
+    margin-left:12em;
+    position:fixed;
+}
+
+.sign_in_option{
+    color:#ffa073;
+       padding-bottom:20px!important;
+
+}
+
+#remeber_me{
+  
+
+    }
+
+
+#btn{
+ display: inline-block;
+ padding-left:1em;
+ font-size: 15px;
+
+}
+
+#remeber_checkbox{
+  
+  width: auto;
+  padding-right:11em;
+}
+
+#email_sign_in_label{
+         font-size: 18px;
+}
+
+#password_sign_in_label{
+         font-size: 18px;
+}
+
+.sign_in_option{
+  text-decoration:none !important;
+        font-weight:bold !important;
+      font-size: 15px !important;
+
+}
+
+.sign_in_option a:hover {
+     text-decoration:none !important;
+        font-weight:bold !important;
+
+}

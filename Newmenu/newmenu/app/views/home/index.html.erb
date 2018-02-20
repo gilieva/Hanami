@@ -1,0 +1,86 @@
+
+  <div class="row">
+
+<h2> Поръчано за деня</h2>
+    <div class="row" style="border-top:1px solid black">
+       
+       <%  @order_items.each do |current_order_item| %>
+                     <%  @current_products.each do |current_product| %>
+                     <% if(current_product.id ==current_order_item.product_id) %>
+      <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+           
+              <a href="#"><%=image_tag("#{current_product.id}.jpg", alt: "Example Image", class: :imgpr)%></a>
+               <div class="card-body">
+              <h4 class="card-title">
+    <a href="#" style="border: solid 10px; border-color: #f1f1f1"><%= current_product.name%></a>
+    <p><%= current_product.description %></p>
+
+
+</h4>
+       <p href="#" style="border: solid 10px; border-color: #f1f1f1"> <%= number_with_precision(current_product.price, :precision => 2) %> лв.</p>
+        <% current_product.id %>
+          <% current_product_order_items_id  = @items_array[@counter] %>
+          <% @counter=@counter+1 %>
+
+         </div>
+          <p> <%= link_to "Откажи",{:controller => :home,:action => 'destroy',:id => current_product.id ,:current_product_order_items_id =>  current_product_order_items_id},data: {confirm: 'Сигурни ли сте че искате да откажете тази поръчка?'} %> </p>
+       </div>
+     </div>
+    
+        
+    <% end %>
+ <% end %>
+    <% end %>
+    <% if(@counter==0) %>
+     <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+    <h1> Нямате поръчка </h1>
+  </div>
+</div>
+    <% end %>
+     </div>
+
+   
+ 
+       <h2> Ястия </h2>
+ <div class="row" style="border-top:1px solid black">
+
+         
+          <% @products.each do |product| %>
+           <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+      
+              <a href="#"><%=image_tag("#{product.id}.jpg", alt: "Example Image", class: :imgpr)%></a>
+               <div class="card-body">
+              <h4 class="card-title">
+    <a href="#" style="border: solid 10px; border-color: #f1f1f1"><%= product.name %></a>
+    <p> <%= product.description %> </p>
+</h4>
+       <p class="card-text" style="border: solid 10px; border-color: #f1f1f1">Цена: <%= number_with_precision(product.price, :precision => 2) %>.лв</p>
+         <%= form_tag('/create') do%>
+          <%= label_tag :Предпочитания %>
+         <%= text_field_tag(:description, params[:description],class: 'form-control')  %>
+       </br><%= label_tag :Количество %>
+            <%= text_field_tag( :quantity , params[:quantity],class: 'form-control')  %>
+            
+            <%= hidden_field_tag :product_id , :value => product.id %>
+          </br>
+            <%= check_box_tag :for_home ,:value =>1,class: 'form-check-input'  %>
+              <%= label_tag(:for_home, "За вкъщи") %>
+              </div>
+              <%= submit_tag "Поръчай" %>
+              <% end %>
+                </div>
+     </div>
+             <% end %>
+   </div>
+
+
+
+
+
+
+      </div>
+     
+

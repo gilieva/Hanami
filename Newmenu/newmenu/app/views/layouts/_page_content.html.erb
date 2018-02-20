@@ -1,0 +1,39 @@
+
+  
+  <!--   <div class="col-sm-8" style="border: solid 1px;">
+
+      
+        
+      -->
+      <!-- <div class="col-sm-8" style="border: solid 1px;">
+    </div>  -->
+    <div class="col-sm-4" id="col-sm-4-id" style="background-color: white;">
+<!-- <p class="text-reight"> .col-sm-4<p> -->
+	<p class="text-center" style=" border-bottom: 1px solid black;">Поръчка<p>
+    <%  @order_items.each do |current_order_item| %>
+     <%  @current_products.each do |current_product| %>
+      <% if(current_product.id ==current_order_item.product_id) %>
+      <% current_product_order_items_id_del  = @items_array[@counter_del] %>
+          <% @counter_del=@counter_del+1 %>
+		<p class="text-left" > <%= current_product.name%> | Бр. <%= current_order_item.quantity %>&nbsp<%= link_to "+",{:controller => :home,:action =>'update',:order_item_id_update => current_order_item.id,:add => current_order_item.quantity},data: {confirm: 'Сигурни ли сте че искате да увеличите  количеството?'}  %> 
+
+
+
+
+
+
+      |&nbsp <%= link_to "-",{:controller => :home,:action =>'update',:order_item_id_update => current_order_item.id,:less => current_order_item.quantity },data: {confirm: 'Сигурни ли сте че искате да намалите  количеството?'}  %>
+
+
+
+
+      &nbsp|&nbsp  <%= link_to "X",{:controller => :home,:action => 'destroy',:id => current_product.id ,:current_product_order_items_id =>  current_product_order_items_id_del} ,data: {confirm: 'Сигурни ли сте че искате да откажете тази поръчка?'} %><p>
+  
+         <% end %>
+           <% end %>
+           <% end %>
+
+						<p class="text-left" style=" border-top: 1px solid black;"> Цена:  <%=    number_with_precision(@sum, :precision => 2) %> лв. <p>
+
+
+   
