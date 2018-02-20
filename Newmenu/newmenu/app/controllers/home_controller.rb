@@ -7,6 +7,7 @@ class HomeController < ApplicationController
   	end
 
     @user = current_user.id
+
      @products_supi = Product.where(category: "supi")
      @products_osnovni = Product.where(category: "osnovni")
      @products_sandvichi = Product.where(category: "sandvichi")
@@ -17,6 +18,11 @@ class HomeController < ApplicationController
 
      id_array = []
      @date = 0
+
+     @products = Product.all
+     id_array = []
+ id_p =23
+
      @for_home = 0
      @items_array =  []
      @items_array_product =  []
