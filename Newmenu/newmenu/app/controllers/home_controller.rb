@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     @user = current_user.id
      @products = Product.all
      id_array = []
-
+     @date = 0
      @for_home = 0
      @items_array =  []
      @items_array_product =  []
@@ -65,6 +65,7 @@ class HomeController < ApplicationController
       else
         for_home = 0
       end
+      date = params[:date]
      quantity = params[:quantity].to_i
        description =params[:description]
       create_this_user_order = current_user.id 
@@ -83,7 +84,7 @@ class HomeController < ApplicationController
        object_order = Order.new(:user_id => create_this_user_order)
       object_order.save
      select_last_order_id = Order.last.id
-     object_orders_item = OrdersItem.new(:product_id => create_this_product_id , :order_id =>  select_last_order_id ,:quantity => quantity,:description => description ,:for_home =>for_home,:total_price => total_price)
+     object_orders_item = OrdersItem.new(:product_id => create_this_product_id , :order_id =>  select_last_order_id ,:quantity => quantity,:description => description ,:for_home =>for_home,:total_price => total_price, :date => date)
      object_orders_item.save
      redirect_to '/'
   end

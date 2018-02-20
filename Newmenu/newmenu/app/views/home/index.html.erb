@@ -18,7 +18,7 @@
 
 
 </h4>
-       <p href="#" style="border: solid 10px; border-color: #f1f1f1"> <%= number_with_precision(current_product.price, :precision => 2) %> лв.</p>
+       <p href="#" style="border: solid 10px; border-color: #f1f1f1"> <%= current_product.price %> лв.</p>
         <% current_product.id %>
           <% current_product_order_items_id  = @items_array[@counter] %>
           <% @counter=@counter+1 %>
@@ -57,19 +57,25 @@
     <a href="#" style="border: solid 10px; border-color: #f1f1f1"><%= product.name %></a>
     <p> <%= product.description %> </p>
 </h4>
-       <p class="card-text" style="border: solid 10px; border-color: #f1f1f1">Цена: <%= number_with_precision(product.price, :precision => 2) %>.лв</p>
+       <p class="card-text" style="border: solid 10px; border-color: #f1f1f1">Цена: <%= product.price %>.лв</p>
          <%= form_tag('/create') do%>
           <%= label_tag :Предпочитания %>
          <%= text_field_tag(:description, params[:description],class: 'form-control')  %>
        </br><%= label_tag :Количество %>
-            <%= text_field_tag( :quantity , params[:quantity],class: 'form-control')  %>
+            <%= number_field_tag( :quantity , params[:quantity], value:1 , min: 1, max:10 ,class: 'form-control') %>
             
             <%= hidden_field_tag :product_id , :value => product.id %>
+
           </br>
-          true
-            <%= check_box_tag :for_home ,:value =>1,class: 'form-check-input'  %>
+            <%= check_box_tag :for_home,class: 'form-check-input'  %>
               <%= label_tag(:for_home, "За вкъщи") %>
+               <%= datetime_field(@orders_item, :date,  min: Date.today, max: 5.day.from_now, id: :meeting_start_time) %>
               </div>
+
+
+
+
+
               <%= submit_tag "Поръчай" %>
               <% end %>
                 </div>
