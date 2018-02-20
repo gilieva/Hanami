@@ -14,6 +14,7 @@
 !/tmp/.keep
 db/*.sqlite3
 db/migrate/*.*
+db/migrate/*
 db/*.*
 
 /node_modules
