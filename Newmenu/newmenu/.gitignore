@@ -12,6 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+db/*.sqlite3
+db/migrate/*.*
 
 /node_modules
 /yarn-error.log
