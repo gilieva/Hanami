@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     @user = current_user.id
      @products = Product.all
      id_array = []
-
+ id_p =23
      @for_home = 0
      @items_array =  []
      @items_array_product =  []
