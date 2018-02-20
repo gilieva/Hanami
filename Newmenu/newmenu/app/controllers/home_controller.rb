@@ -7,7 +7,14 @@ class HomeController < ApplicationController
   	end
 
     @user = current_user.id
-     @products = Product.all
+     @products_supi = Product.where(category: "supi")
+     @products_osnovni = Product.where(category: "osnovni")
+     @products_sandvichi = Product.where(category: "sandvichi")
+     @products_deserti = Product.where(category: "deserti")
+     @products_napitki = Product.where(category: "napitki")
+     
+
+
      id_array = []
      @date = 0
      @for_home = 0
@@ -33,7 +40,7 @@ class HomeController < ApplicationController
      end
      
      
-        @current_products = Product.where(id: @items_array_product).all
+        @current_products = Product.where(id: @items_array_product)
     
      @order_items.each do |order_items_total_sum|
       @sum = @sum +order_items_total_sum.total_price
@@ -97,8 +104,9 @@ class HomeController < ApplicationController
         if(get_less > 1)
         update_order_item_quantity = OrdersItem.find_by(id: order_item_id_update)
         less_to_quantity = get_less - 1
+         update_total_price = current_product_price*less_to_quantity
 
-        update_order_item_quantity.update(quantity: less_to_quantity)
+        update_order_item_quantity.update(quantity: less_to_quantity,total_price: update_total_price)
       end
       end
  redirect_to '/'

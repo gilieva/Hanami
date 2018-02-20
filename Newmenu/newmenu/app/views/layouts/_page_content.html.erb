@@ -23,7 +23,8 @@
 
 
 
-      |&nbsp <%= link_to "-",{:controller => :home,:action =>'update',:order_item_id_update => current_order_item.id,:less => current_order_item.quantity },data: {confirm: 'Сигурни ли сте че искате да намалите  количеството?'}  %>
+      |&nbsp <%= link_to "-",{:controller => :home,:action =>'update',:product_price => current_product.price,
+        :order_item_id_update => current_order_item.id,:less => current_order_item.quantity },data: {confirm: 'Сигурни ли сте че искате да намалите  количеството?'}  %>
 
 
 
