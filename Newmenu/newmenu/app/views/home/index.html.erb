@@ -70,7 +70,9 @@
             <%= check_box_tag :for_home,class: 'form-check-input'  %>
               <%= label_tag(:for_home, "За вкъщи") %>
                <%= datetime_field(@orders_item, :date,  min: Date.today, max: 5.day.from_now, id: :meeting_start_time) %>
-              </div>
+              </div><%= calendar number_of_days: 1  do |date| %>
+  <%= date %>
+<% end %>
 
 
 
