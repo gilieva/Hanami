@@ -1,12 +1,14 @@
 
   <div class="row">
+    <%= @date_a %>
+
 
 <h2> Поръчано за деня</h2>
     <div class="row" style="border-top:1px solid black">
        
        <%  @order_items.each do |current_order_item| %>
                      <%  @current_products.each do |current_product| %>
-                     <% if(current_product.id ==current_order_item.product_id) %>
+                     <% if(current_product.id == current_order_item.product_id) %>
       <div class="col-lg-6 portfolio-item">
           <div class="card h-100">
            
@@ -45,9 +47,9 @@
  
        <h2> Ястия </h2>
  <div class="row" style="border-top:1px solid black">
-      <h3>  Супи</h3>
+
          
-          <% @products_supi.each do |product| %>
+          <% @products.each do |product| %>
            <div class="col-lg-6 portfolio-item">
           <div class="card h-100">
       
@@ -64,55 +66,22 @@
        </br><%= label_tag :Количество %>
             <%= number_field_tag( :quantity , params[:quantity], value:1 , min: 1, max:10 ,class: 'form-control') %>
             
-            <%= hidden_field_tag :product_id , :value => product.id %>
+            <%= hidden_field_tag :product_id , :value => product.id  %>
+            <%= hidden_field_tag :date , :value => @date_a %>
+
 
           </br>
             <%= check_box_tag :for_home,class: 'form-check-input'  %>
               <%= label_tag(:for_home, "За вкъщи") %>
-               <%= datetime_field(@orders_item, :date,  min: Date.today, max: 5.day.from_now, id: :meeting_start_time) %>
+         
+
+
               </div>
 
 
 
 
 
-              <%= submit_tag "Поръчай" %>
-              <% end %>
-                </div>
-     </div>
-             <% end %>
-   </div>
-   <div class="row" style="border-top:1px solid black">
-      <h3>Основни </h3>
-         
-          <% @products_osnovni.each do |product| %>
-           <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-      
-              <a href="#"><%=image_tag("#{product.id}.jpg", alt: "Example Image", class: :imgpr)%></a>
-               <div class="card-body">
-              <h4 class="card-title">
-    <a href="#" style="border: solid 10px; border-color: #f1f1f1"><%= product.name %></a>
-    <p> <%= product.description %> </p>
-</h4>
-       <p class="card-text" style="border: solid 10px; border-color: #f1f1f1">Цена: <%= product.price %>.лв</p>
-         <%= form_tag('/create') do%>
-          <%= label_tag :Предпочитания %>
-         <%= text_field_tag(:description, params[:description],class: 'form-control')  %>
-       </br><%= label_tag :Количество %>
-            <%= number_field_tag( :quantity , params[:quantity], value:1 , min: 1, max:10 ,class: 'form-control') %>
-            
-            <%= hidden_field_tag :product_id , :value => product.id %>
-
-          </br>
-            <%= check_box_tag :for_home,class: 'form-check-input'  %>
-              <%= label_tag(:for_home, "За вкъщи") %>
-               <%= datetime_field(@orders_item, :date,  min: Date.today, max: 5.day.from_now, id: :meeting_start_time) %>
-              </div>
-
-
-
-
 
               <%= submit_tag "Поръчай" %>
               <% end %>
@@ -120,130 +89,6 @@
      </div>
              <% end %>
    </div>
-
-
-<div class="row" style="border-top:1px solid black">
-      <h3> Сандвичи</h3>
-         
-          <% @products_sandvichi.each do |product| %>
-           <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-      
-              <a href="#"><%=image_tag("#{product.id}.jpg", alt: "Example Image", class: :imgpr)%></a>
-               <div class="card-body">
-              <h4 class="card-title">
-    <a href="#" style="border: solid 10px; border-color: #f1f1f1"><%= product.name %></a>
-    <p> <%= product.description %> </p>
-</h4>
-       <p class="card-text" style="border: solid 10px; border-color: #f1f1f1">Цена: <%= product.price %>.лв</p>
-         <%= form_tag('/create') do%>
-          <%= label_tag :Предпочитания %>
-         <%= text_field_tag(:description, params[:description],class: 'form-control')  %>
-       </br><%= label_tag :Количество %>
-            <%= number_field_tag( :quantity , params[:quantity], value:1 , min: 1, max:10 ,class: 'form-control') %>
-            
-            <%= hidden_field_tag :product_id , :value => product.id %>
-
-          </br>
-            <%= check_box_tag :for_home,class: 'form-check-input'  %>
-              <%= label_tag(:for_home, "За вкъщи") %>
-               <%= datetime_field(@orders_item, :date,  min: Date.today, max: 5.day.from_now, id: :meeting_start_time) %>
-              </div><%= calendar number_of_days: 1  do |date| %>
-  <%= date %>
-<% end %>
-
-
-
-
-
-              <%= submit_tag "Поръчай" %>
-              <% end %>
-                </div>
-     </div>
-             <% end %>
-   </div>
-
-
-<div class="row" style="border-top:1px solid black">
-      <h3>Десерти </h3>
-         
-          <% @products_deserti.each do |product| %>
-           <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-      
-              <a href="#"><%=image_tag("#{product.id}.jpg", alt: "Example Image", class: :imgpr)%></a>
-               <div class="card-body">
-              <h4 class="card-title">
-    <a href="#" style="border: solid 10px; border-color: #f1f1f1"><%= product.name %></a>
-    <p> <%= product.description %> </p>
-</h4>
-       <p class="card-text" style="border: solid 10px; border-color: #f1f1f1">Цена: <%= product.price %>.лв</p>
-         <%= form_tag('/create') do%>
-          <%= label_tag :Предпочитания %>
-         <%= text_field_tag(:description, params[:description],class: 'form-control')  %>
-       </br><%= label_tag :Количество %>
-            <%= number_field_tag( :quantity , params[:quantity], value:1 , min: 1, max:10 ,class: 'form-control') %>
-            
-            <%= hidden_field_tag :product_id , :value => product.id %>
-
-          </br>
-            <%= check_box_tag :for_home,class: 'form-check-input'  %>
-              <%= label_tag(:for_home, "За вкъщи") %>
-               <%= datetime_field(@orders_item, :date,  min: Date.today, max: 5.day.from_now, id: :meeting_start_time) %>
-              </div>
-
-
-
-
-
-              <%= submit_tag "Поръчай" %>
-              <% end %>
-                </div>
-     </div>
-             <% end %>
-   </div>
-
-
-<div class="row" style="border-top:1px solid black">
-      <h3> Напитки</h3>
-         
-          <% @products_napitki.each do |product| %>
-           <div class="col-lg-6 portfolio-item">
-          <div class="card h-100">
-      
-              <a href="#"><%=image_tag("#{product.id}.jpg", alt: "Example Image", class: :imgpr)%></a>
-               <div class="card-body">
-              <h4 class="card-title">
-    <a href="#" style="border: solid 10px; border-color: #f1f1f1"><%= product.name %></a>
-    <p> <%= product.description %> </p>
-</h4>
-       <p class="card-text" style="border: solid 10px; border-color: #f1f1f1">Цена: <%= product.price %>.лв</p>
-         <%= form_tag('/create') do%>
-          <%= label_tag :Предпочитания %>
-         <%= text_field_tag(:description, params[:description],class: 'form-control')  %>
-       </br><%= label_tag :Количество %>
-            <%= number_field_tag( :quantity , params[:quantity], value:1 , min: 1, max:10 ,class: 'form-control') %>
-            
-            <%= hidden_field_tag :product_id , :value => product.id %>
-
-          </br>
-            <%= check_box_tag :for_home,class: 'form-check-input'  %>
-              <%= label_tag(:for_home, "За вкъщи") %>
-               <%= datetime_field(@orders_item, :date,  min: Date.today, max: 5.day.from_now, id: :meeting_start_time) %>
-              </div>
-
-
-
-
-
-              <%= submit_tag "Поръчай" %>
-              <% end %>
-                </div>
-     </div>
-             <% end %>
-   </div>
-
-
 
 
 
