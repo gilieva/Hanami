@@ -1,12 +1,18 @@
 
   <div class="row">
+<<<<<<< HEAD
 <%=  @date_a %>
+=======
+    <%= @date_a %>
+
+
+>>>>>>> 1f7cbfb0b7aff569e305ad21f7b349dd2cd32965
 <h2> Поръчано за деня</h2>
     <div class="row" style="border-top:1px solid black">
        
        <%  @order_items.each do |current_order_item| %>
                      <%  @current_products.each do |current_product| %>
-                     <% if(current_product.id ==current_order_item.product_id) %>
+                     <% if(current_product.id == current_order_item.product_id) %>
       <div class="col-lg-6 portfolio-item">
           <div class="card h-100">
            
@@ -45,6 +51,7 @@
  
        <h2> Ястия </h2>
  <div class="row" style="border-top:1px solid black">
+<<<<<<< HEAD
       <h3>  Супи</h3>
          
           <% @products_supi.each do |product| %>
@@ -74,18 +81,11 @@
 
 
 
+=======
+>>>>>>> 1f7cbfb0b7aff569e305ad21f7b349dd2cd32965
 
-
-              <%= submit_tag "Поръчай" %>
-              <% end %>
-                </div>
-     </div>
-             <% end %>
-   </div>
-   <div class="row" style="border-top:1px solid black">
-      <h3>Основни </h3>
          
-          <% @products_osnovni.each do |product| %>
+          <% @products.each do |product| %>
            <div class="col-lg-6 portfolio-item">
           <div class="card h-100">
       
@@ -101,6 +101,7 @@
          <%= text_field_tag(:description, params[:description],class: 'form-control')  %>
        </br><%= label_tag :Количество %>
             <%= number_field_tag( :quantity , params[:quantity], value:1 , min: 1, max:10 ,class: 'form-control') %>
+<<<<<<< HEAD
             <%= hidden_field_tag :product_id , :value => product.id %>
             <%= hidden_field_tag :date , :value => @date_a %>
 
@@ -225,7 +226,21 @@
             <%= check_box_tag :for_home,class: 'form-check-input'  %>
               <%= label_tag(:for_home, "За вкъщи") %>
         
+=======
+            
+            <%= hidden_field_tag :product_id , :value => product.id  %>
+            <%= hidden_field_tag :date , :value => @date_a %>
+
+
+          </br>
+            <%= check_box_tag :for_home,class: 'form-check-input'  %>
+              <%= label_tag(:for_home, "За вкъщи") %>
+         
+
+
+>>>>>>> 1f7cbfb0b7aff569e305ad21f7b349dd2cd32965
               </div>
+
 
 
 
@@ -237,8 +252,6 @@
      </div>
              <% end %>
    </div>
-
-
 
 
 
