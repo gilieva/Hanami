@@ -40,7 +40,7 @@ en:
       long: "%B %d, %Y"
 
     day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
-    abbr_day_names: [Н, П, В, С, Ч, П, С]
+    abbr_day_names: [неделя, понеделник, вторник, сряда, четвъртък, петък, събота]
     # Don't forget the nil at the beginning; there's no such thing as a 0th month
     month_names: [~, януари, февруари, март, април, май, юни, юли, август, септември, октомври, ноември, декември]
     abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]

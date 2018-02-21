@@ -2,9 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .simple-calendar {
+  margin-right: 20em;
     .calendar-heading{
        color: black;
-       margin-left: 8.7em;
+       // margin-left: 8.7em;
        // font-size: 2.2em;
     }
     table {
@@ -57,6 +58,7 @@
 
     .day {
       // height: 50px;
+      text-align: center;
     }
 
     .wday-0 {}
@@ -70,16 +72,18 @@
     .today {
       background: #e6878c; //#ac7153
       color: gray;
+      text-align: center;
     }
-    .today:before {
+    // .today:before {
       
-       content: "Днес";
-    }
+    //    content: "Днес";
+    // }
 
 
     .past {
       background-color: #ffa073;
       color: gray;
+      text-align: center;
 
     }
     .future {

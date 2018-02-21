@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   	else
   		redirect_to new_user_session_path
   	end
-
+    @date_a = params[:start_date]
     @user = current_user.id
      @products = Product.all
      id_array = []
@@ -14,7 +14,7 @@ class HomeController < ApplicationController
      @items_array =  []
      @items_array_product =  []
      @counter=0
-      @counter_del=0
+    @counter_del=0
      @sum =0
      
       @orders = Order.where(user_id: @user).all
@@ -43,6 +43,7 @@ class HomeController < ApplicationController
                 end
           end
       end
+
   end
 
 
@@ -65,7 +66,13 @@ class HomeController < ApplicationController
       else
         for_home = 0
       end
+
+
+
       date = params[:date]
+
+
+
      quantity = params[:quantity].to_i
        description =params[:description]
       create_this_user_order = current_user.id 
@@ -138,60 +145,3 @@ class HomeController < ApplicationController
 end
 
 
-
-# class HomeController < ApplicationController
-#   def index
-#     @meetings = Meeting.all
-#     if user_signed_in?
-#     else
-#       redirect_to new_user_session_path
-#     end
-#     @user = current_user.id
-#      @products = Product.all
-#      id_array = Array.new
-#      items_array =  Array.new
-#      @sum =0
-#       @orders = Order.where(user_id: @user).all
-#       @orders.each do |order_id|
-#           id_array = id_array.push(order_id.id)
-#       end
-#     @orders.each do |order|
-#      @order_items =  OrdersItem.where(order_id:  id_array).all
-#    end
-#     @order_items.each do |order_items_id|
-#       items_array = items_array.push(order_items_id.id)
-#     end
-#       @order_items.each do |order_item|
-#         @current_products = Product.where(id:  items_array).all
-    
-#     end
-#       @current_products.each do |current_product|
-#         @sum= @sum +current_product.price
-#       end
-#   end
-
-
-#   def home
-#     @meetings = Meeting.all
-#   end
-
-#   def create
-#   end
-#   def new
-
-#   end
-#   def destroy
-#     @delete_this_id = params[:id]
-#     @this_order = OrdersItem.where(:conditions =>["product_id = @delete_this_id"]).all
-#     @this_order.destroy
-#     redirect_to :index
-#   end
-#   def show
-#   end
-
-#   def help
-#   end
-
-#   def about
-#   end
-# end
