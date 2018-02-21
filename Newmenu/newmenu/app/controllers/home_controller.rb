@@ -1,5 +1,12 @@
 class HomeController < ApplicationController
   def index
+
+     check_data = params[:start_date]
+  if(!check_data.nil?)
+    @date_a = check_data
+  else
+    @date_a = Time.now.strftime("%Y-%m-%d")
+  end
   	@meetings = Meeting.all
   	if user_signed_in?
   	else
@@ -21,7 +28,7 @@ class HomeController < ApplicationController
 
      @products = Product.all
      id_array = []
- id_p =23
+
 
      @for_home = 0
      @items_array =  []
@@ -30,7 +37,7 @@ class HomeController < ApplicationController
       @counter_del=0
      @sum =0
      
-      @orders = Order.where(user_id: @user).all
+      @orders = Order.where(user_id: @user,date:@date_a ).all
       @orders.each do |order_id|
           id_array = id_array.push(order_id.id)
       end
@@ -89,10 +96,10 @@ class HomeController < ApplicationController
 
       
 
-       object_order = Order.new(:user_id => create_this_user_order)
+      object_order = Order.new(:user_id => create_this_user_order,:date => date)
       object_order.save
      select_last_order_id = Order.last.id
-     object_orders_item = OrdersItem.new(:product_id => create_this_product_id , :order_id =>  select_last_order_id ,:quantity => quantity,:description => description ,:for_home =>for_home,:total_price => total_price, :date => date)
+     object_orders_item = OrdersItem.new(:product_id => create_this_product_id , :order_id =>  select_last_order_id ,:quantity => quantity,:description => description ,:date => date,:for_home =>for_home,:total_price => total_price,:date => date )
      object_orders_item.save
      redirect_to '/'
   end
@@ -115,9 +122,9 @@ class HomeController < ApplicationController
         update_order_item_quantity.update(quantity: less_to_quantity,total_price: update_total_price)
       end
       end
- redirect_to '/'
 
-    
+
+       redirect_to '/'
   end
   def new
 
